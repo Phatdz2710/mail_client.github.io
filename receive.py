@@ -32,7 +32,6 @@ class ReceiveMail(threading.Thread):
             list_folder = ['Inbox', 'Spam', 'Work', 'Project', 'Important']
             #Kiểm tra xem thư mục có tồn tại hay không
             if os.path.exists(now_directory):
-                print(now_directory)
                 #lặp lại các folder trong folder của mail đó 
                 for name_folder in list_folder:
                     now_dir = os.path.join(now_directory, name_folder) # Folder đang xét
@@ -81,7 +80,6 @@ class ReceiveMail(threading.Thread):
             for i in range(0, len(list_folder)): # Duyệt từng folder trong list_folder
                 subfolder_path = os.path.join(now_directory, list_folder[i]) # tạo đường dẫn đến các folder đó 
                 for j in range(0, len(_list[i])): # Bắt đầu ghi các nội dung mail vào trong folder
-                    print(_list[i][j]['mail'])
                     manager.AddFileToFolder(subfolder_path, 'mail {}.txt'.format(str(j)), _list[i][j]['mail'])
         except Exception as e:
             print(f"ERROR")
@@ -293,7 +291,7 @@ class ReceiveMail(threading.Thread):
             self.first_time_run = False
 
         while True:
-            print("0.Exit")
+            print("0. Exit")
             print("1. Inbox")
             print("2. Spam")
             print("3. Project")
